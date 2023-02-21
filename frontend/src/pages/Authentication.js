@@ -29,9 +29,9 @@ export const action = async ({ request, params }) => {
     body: JSON.stringify(authData),
   });
 
-  // if (response.status === 422 || response.status === 401) {
-  //   return response;
-  // }
+  if (response.status === 422 || response.status === 401) {
+    return response;
+  }
 
   if (!response.ok) {
     throw json({ message: "Could not authenticate user" }, { status: 500 });
